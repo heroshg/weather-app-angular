@@ -1,0 +1,15 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <!-- Apontamos ao formsModule que esse é um formulário -->
+    <input type="text" placeholder="Buscar localização" name="city" [(ngModel)]="initialCityName">
+    <!-- Apontamos que esse input se refere ao campo de cidade inicial usando twoway databinding -->
+    <span (click)="onSubmit()">
+    <!-- Ao clicar você vai chamar a função onclick usando event binding -->
+    <fa-icon animation="fade" style="--fa-animation-duration: 5s; cursor: pointer;" size="lg" class="search-icon" [icon]="searchIcon"></fa-icon>
+    </span>
+  </form>
+</div>
+
+<app-weather-card *ngIf="weatherDatas" [weatherDatasInput]="weatherDatas"></app-weather-card>
+<!-- Usamos o *ngIf para caso realmente exista os dados procurados este card será renderizado, caso contrário não -->
+<!-- E como este é o componente pai do weather-card através do input dele passamos esses dados para serem renderizados caso existam usa property binding-->
